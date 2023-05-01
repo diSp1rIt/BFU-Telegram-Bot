@@ -165,6 +165,7 @@ async def menu_handler(message: types.Message, state: FSMContext):
                 keyboard.add(key)
         if len(keyboard.keyboard) == 0:
             await message.answer('У вас нет групп')
+            await state.set_state(HeadMan.menu.state)
             return
         await message.answer('Выберете группу', reply_markup=keyboard)
 

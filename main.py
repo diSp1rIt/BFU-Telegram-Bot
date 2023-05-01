@@ -163,6 +163,9 @@ async def menu_handler(message: types.Message, state: FSMContext):
         for key in groups.keys():
             if message.chat.id in users.keys() and key in users[message.chat.id]:
                 keyboard.add(key)
+        if len(keyboard.keyboard) == 0:
+            await message.answer('У вас нет групп')
+            return
         await message.answer('Выберете группу', reply_markup=keyboard)
 
 
